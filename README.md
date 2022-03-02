@@ -3,6 +3,11 @@
 ## 원소스
 https://github.com/codingspecialist/-Springboot-Security-OAuth2.0-V3
 
+```
+서비스 등록 방법
+https://deeplify.dev/back-end/spring/oauth2-social-login
+``` 
+
 ## 추가
 
 ### kakao 인증 추가
