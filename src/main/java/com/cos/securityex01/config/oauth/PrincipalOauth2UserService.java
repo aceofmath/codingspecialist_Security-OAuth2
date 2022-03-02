@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.cos.securityex01.config.auth.PrincipalDetails;
 import com.cos.securityex01.config.oauth.provider.FaceBookUserInfo;
 import com.cos.securityex01.config.oauth.provider.GoogleUserInfo;
+import com.cos.securityex01.config.oauth.provider.KakaoUserInfo;
 import com.cos.securityex01.config.oauth.provider.NaverUserInfo;
 import com.cos.securityex01.config.oauth.provider.OAuth2UserInfo;
 import com.cos.securityex01.model.User;
@@ -29,6 +30,10 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 		OAuth2User oAuth2User = super.loadUser(userRequest); // google의 회원 프로필 조회
 
+//		System.out.println("userRequest getClientRegistration : " + userRequest.getClientRegistration());
+//		System.out.println("userRequest getAccessToken : " + userRequest.getAccessToken());
+//		System.out.println("userRequest getTokenValue : " + userRequest.getAccessToken().getTokenValue());
+		
 		// code를 통해 구성한 정보
 		System.out.println("userRequest clientRegistration : " + userRequest.getClientRegistration());
 		// token을 통해 응답받은 회원정보
@@ -50,6 +55,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		} else if (userRequest.getClientRegistration().getRegistrationId().equals("naver")){
 			System.out.println("네이버 로그인 요청~~");
 			oAuth2UserInfo = new NaverUserInfo((Map)oAuth2User.getAttributes().get("response"));
+		} else if (userRequest.getClientRegistration().getRegistrationId().equals("kakao")){
+			System.out.println("카카오 로그인 요청~~");
+			oAuth2UserInfo = new KakaoUserInfo((Map)oAuth2User.getAttributes());
 		} else {
 			System.out.println("우리는 구글과 페이스북만 지원해요 ㅎㅎ");
 		}
