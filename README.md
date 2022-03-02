@@ -8,3 +8,4 @@ https://github.com/codingspecialist/-Springboot-Security-OAuth2.0-V3
 ### kakao 인증 추가
 
 - Naver와 유사
+- registration, provider 추가
